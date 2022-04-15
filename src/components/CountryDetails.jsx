@@ -1,33 +1,43 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CountryDetails({ countries }) {
   const [country, setCountry] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const currentCountry = countries.find((c) => c.alpha3Code === id);
     setCountry(currentCountry);
     setIsLoading(false);
-  }, [countries]);
+  }, [id]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
 
   return (
-    <main className="container mx-auto">
-      <article className="flex flex-col max-w-lg mx-auto my-4">
-        <header className="w-full">
+    <section className="flex flex-col my-6 gap-6">
+      <button
+        onClick={() => navigate(-1)}
+        className="shadow rounded py-2 px-8 w-fit flex items-center bg-white dark:bg-blue-700 dark:text-white"
+      >
+        <span className="font-extrabold text-xl">🡐</span>
+        <p className="ml-2">Back</p>
+      </button>
+
+      <article className="flex flex-col justify-between items-center container mx-auto my-4 desktop:flex-row">
+        <header className="w-full desktop:w-6/12">
           <img className="w-full" src={country.flag} alt={country.name} />
         </header>
 
-        <div className="flex flex-col p-4">
-          <h2 className="text-lg font-extrabold desktop:text-xl mb-3">
+        <div className="flex flex-col p-0 w-full desktop:p-4 desktop:w-5/12">
+          <h2 className="text-lg font-extrabold desktop:text-2xl my-3">
             {country.name}
           </h2>
-          <div className="flex justify-between">
+          <div className="flex flex-col justify-between gap-6 desktop:flex-row">
             <div className="">
               <p className="font-semibold">
                 Native Name:{" "}
@@ -70,14 +80,27 @@ export default function CountryDetails({ countries }) {
               </p>
             </div>
           </div>
-          <footer>
+
+          <footer className="my-6">
             <h3 className="text-md font-semibold">Border Countries:</h3>
-            <div className="flex justify-center flex-wrap gap-3 my-4">
-              {country.borders}
+            <div className="flex flex-wrap gap-3 my-2">
+              {country.borders ? (
+                country.borders.map((border) => (
+                  <Link
+                    key={border}
+                    to={`/country/${border}`}
+                    className="rounded shadow py-2 px-4 dark:border-0 dark:bg-blue-700"
+                  >
+                    {countries.find((c) => c.alpha3Code === border).name}
+                  </Link>
+                ))
+              ) : (
+                <p className="text-3xl">¯\_(ツ)_/¯</p>
+              )}
             </div>
           </footer>
         </div>
       </article>
-    </main>
+    </section>
   );
 }

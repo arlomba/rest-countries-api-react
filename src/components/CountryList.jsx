@@ -26,8 +26,8 @@ export default function CountryList({ countries }) {
   };
 
   return (
-    <main className="container mx-auto">
-      <section className="flex flex-col desktop:flex-row gap-6 justify-between px-3 my-8">
+    <>
+      <section className="flex flex-col desktop:flex-row gap-6 justify-between px-3 my-8 desktop:px-0">
         <input
           type="text"
           className="shadow rounded py-3 px-6 w-full desktop:w-1/3 dark:bg-blue-700 dark:placeholder:text-white"
@@ -48,13 +48,13 @@ export default function CountryList({ countries }) {
         </select>
       </section>
 
-      <section className="grid grid-cols-1 px-3 my-8 gap-6 desktop:grid-cols-4 desktop:gap-12">
+      <section className="grid grid-cols-1 px-3 my-8 gap-6 desktop:px-0 desktop:grid-cols-4 desktop:gap-12">
         {filteredCountries.map((country) => (
           <Link to={`/country/${country.alpha3Code}`} key={country.alpha3Code}>
             <Card country={country} />
           </Link>
         ))}
       </section>
-    </main>
+    </>
   );
 }

@@ -27,13 +27,15 @@ export default function App() {
     <>
       <Header />
 
-      <Routes>
-        <Route index element={<CountryList countries={countries} />} />
-        <Route
-          path="country/:id"
-          element={<CountryDetails countries={countries} />}
-        />
-      </Routes>
+      <main className="container mx-auto">
+        <Routes>
+          <Route index element={<CountryList countries={countries} />} />
+          <Route
+            path="country/:id"
+            element={<CountryDetails countries={countries} />}
+          />
+        </Routes>
+      </main>
     </>
   );
 }
