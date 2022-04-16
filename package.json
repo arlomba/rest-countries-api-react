@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build --base ./",
+    "preview": "vite preview",
+    "gh-pages": "push-dir --dir=dist --branch=gh-pages --cleanup --verbose"
   },
   "dependencies": {
     "react": "^17.0.2",

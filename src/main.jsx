@@ -6,7 +6,7 @@ import App from "./App";
 
 render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/rest-countries-api-react">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
