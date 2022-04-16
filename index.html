@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" class="overflow-y-scroll">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REST Countries API with color theme switcher - React</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
+    </script>
+    <script
+      type="module"
+      crossorigin
+      src="/rest-countries-api-react/assets/index.96e8ef2e.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="/rest-countries-api-react/assets/index.b4982581.css"
+    />
+  </head>
+  <body class="bg-gray-50 text-blue-900 dark:bg-blue-800 dark:text-white">
+    <div id="root"></div>
+  </body>
+</html>
