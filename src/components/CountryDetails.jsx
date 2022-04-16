@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function CountryDetails({ countries }) {
   const [country, setCountry] = useState(null);
@@ -15,7 +16,7 @@ export default function CountryDetails({ countries }) {
   }, [id]);
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <LoadingSpinner />;
   }
 
   return (

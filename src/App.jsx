@@ -4,6 +4,7 @@ import CountryList from "./components/CountryList";
 import CountryDetails from "./components/CountryDetails";
 import Header from "./components/Header";
 import { countriesMapper } from "./mappings/countriesMapper";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 export default function App() {
   const [countries, setCountries] = useState([]);
@@ -20,7 +21,7 @@ export default function App() {
   }, []);
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <LoadingSpinner />;
   }
 
   return (
